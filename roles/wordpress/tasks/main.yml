@@ -1,0 +1,3 @@
+---
+- include: mysql.yml
+- include: {{ ansible_facts['os_family'] }}/wordpress.yml

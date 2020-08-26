@@ -1,0 +1,19 @@
+---
+- name: Install PHP Remi Repository
+  yum: 
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm 
+    update_cache: yes 
+    state: latest
+
+- name: Enable PHP Remi Repository
+  dnf: 
+    name: remi-php72
+
+- name: Install PHP
+  yum: 
+    name: 
+    - php
+    - php-mysql
+    - php-fpm
+    - php-gd
+    state: present

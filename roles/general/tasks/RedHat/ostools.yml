@@ -1,0 +1,8 @@
+---
+- name: Install OS tools
+  yum: 
+    name:
+    - htop
+    - iotop
+    - iftop
+    state: latest

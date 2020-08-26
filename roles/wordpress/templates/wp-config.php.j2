@@ -1,0 +1,44 @@
+<?php
+/***
+// Begin Really Simple SSL Load balancing fix
+if ((isset($_ENV["HTTPS"]) && ("on" == $_ENV["HTTPS"]))
+|| (isset($_SERVER["HTTP_X_FORWARDED_SSL"]) && (strpos($_SERVER["HTTP_X_FORWARDED_SSL"], "1") !== false))
+|| (isset($_SERVER["HTTP_X_FORWARDED_SSL"]) && (strpos($_SERVER["HTTP_X_FORWARDED_SSL"], "on") !== false))
+|| (isset($_SERVER["HTTP_CF_VISITOR"]) && (strpos($_SERVER["HTTP_CF_VISITOR"], "https") !== false))
+|| (isset($_SERVER["HTTP_CLOUDFRONT_FORWARDED_PROTO"]) && (strpos($_SERVER["HTTP_CLOUDFRONT_FORWARDED_PROTO"], "https") !== false))
+|| (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && (strpos($_SERVER["HTTP_X_FORWARDED_PROTO"], "https") !== false))
+|| (isset($_SERVER["HTTP_X_PROTO"]) && (strpos($_SERVER["HTTP_X_PROTO"], "SSL") !== false))
+) {
+$_SERVER["HTTPS"] = "on";
+}
+***/
+
+// Database Configurations
+define( 'DB_NAME', '{{ wordpress_db_name }}' );
+define( 'DB_USER', '{{ wordpress_db_user }}' );
+define( 'DB_PASSWORD', '{{ wordpress_db_pass }}' );
+define( 'DB_HOST', '{{ wordpress_db_endpoint }}' );
+define( 'DB_CHARSET', 'utf8' );
+define( 'DB_COLLATE', '' );
+
+// Authentication Unique Keys and Salts.
+define( 'AUTH_KEY',         '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'SECURE_AUTH_KEY',  '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'LOGGED_IN_KEY',    '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'NONCE_KEY',        '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'AUTH_SALT',        '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'SECURE_AUTH_SALT', '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'LOGGED_IN_SALT',   '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+define( 'NONCE_SALT',       '{{ 9999999999999999999999 | random | to_uuid | hash('md5') }}' );
+
+// Wordpress configurations
+
+$table_prefix = 'wp_';
+
+define( 'WP_DEBUG', false );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+
+require_once ABSPATH . 'wp-settings.php';

@@ -1,0 +1,42 @@
+all:
+  children:
+    terraform:
+      hosts:
+        server_tfs_1:
+          ansible_host: 192.168.12.51
+    appservers:
+      children:
+        node:
+          hosts:
+            server_node_1:
+              ansible_host: 192.168.12.60
+        php:
+          hosts:
+            server_php_1:
+              ansible_host: 192.168.12.61
+        wordpress:
+          hosts:
+            server_wp_1:
+              ansible_host: 192.168.12.62
+        java:
+          hosts:
+            server_java_1:
+              ansible_host: 192.168.12.63
+        ruby:
+          hosts:
+            server_ruby_1:
+              ansible_host: 192.168.12.64
+        python:
+          hosts:
+            server_python_1:
+              ansible_host: 192.168.12.65
+        docker:
+          hosts:
+            server_docker_1:
+              ansible_host: 192.168.12.66
+  vars:
+    ansible_connection: ssh
+    ansible_user: vagrant
+    ansible_ssh_private_key_file: ~/Projects/vagrant/configs/mykey
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    ansible_python_interperter: /usr/bin/python3

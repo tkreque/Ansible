@@ -1,0 +1,9 @@
+---
+- name: Install dependencies
+  yum: 
+    name:
+    - epel-release
+    - yum-utils
+    - python2-dnf
+    - git
+    state: latest
