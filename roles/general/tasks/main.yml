@@ -1,5 +1,5 @@
 ---
-- include: {{ ansible_facts['os_family'] }}/osdependencies.yml
-- include: {{ ansible_facts['os_family'] }}/selinux.yml
-- include: {{ ansible_facts['os_family'] }}/ntp.yml
-- include: {{ ansible_facts['os_family'] }}/ostools.yml
+- include: "{{ ansible_facts['os_family'] }}/osdependencies.yml"
+- include: "{{ ansible_facts['os_family'] }}/selinux.yml"
+- include: "{{ ansible_facts['os_family'] }}/ntp.yml"
+- include: "{{ ansible_facts['os_family'] }}/ostools.yml"

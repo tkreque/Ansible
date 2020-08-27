@@ -1,3 +1,8 @@
 ---
-- include: mysql.yml
-- include: {{ ansible_facts['os_family'] }}/wordpress.yml
+- name: Setting the Mysql user password
+  set_fact:
+    wordpress_db_pass: "{{ 999999 | random | hash('md5') }}"
+  run_once: yes
+
+- include: "mysql.yml"
+- include: "{{ ansible_facts['os_family'] }}/wordpress.yml"

@@ -1,2 +1,2 @@
 ---
-- include: {{ ansible_facts['os_family'] }}/php.yml
+- include: "{{ ansible_facts['os_family'] }}/php.yml"

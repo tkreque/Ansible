@@ -1,13 +1,13 @@
 ---
 - name: Download Wordpress Latest
   get_url:
-    url: http://wordpress.org/{{wordpress_version}}.tar.gz
+    url: https://wordpress.org/{{wordpress_version}}.tar.gz
     dest: /tmp/wordpress.tar.gz
   when: wordpress_version == 'latest'
 
 - name: Download Wordpress specific version
   get_url:
-    url: http://wordpress.org/wordpress-{{wordpress_version}}.tar.gz
+    url: https://wordpress.org/wordpress-{{wordpress_version}}.tar.gz
     dest: /tmp/wordpress.tar.gz
   when: wordpress_version != 'latest'
 
@@ -42,12 +42,17 @@
     recurse: yes
     owner: apache
     group: apache
+  notify: restart apache
 
-- name: Restart Apache
-  service: 
-    name: httpd 
-    state: restarted 
+- name: Add .htaccess
+  template: 
+    src: htaccess.j2  
+    dest: /var/www/html/.htaccess
 
 - name: Show Wordpress informations
   debug:
-    msg: "Wordpres url =>  http://{{ ansible_default_ipv4.address }}/"
+    msg: 
+    - "Wordpress informations..."
+    - "Wordpres url =>  http://{{ ansible_eth1.ipv4.address }}/"
+    - ""
+    - "MySQL connection string => mysql -h {{wordpress_db_endpoint}} -u {{wordpress_db_user}} -p{{wordpress_db_pass}} {{wordpress_db_name}}"
