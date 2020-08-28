@@ -64,7 +64,9 @@ This Ansible scripts are used for installation of a Lab but can be used for admi
 ```
 
 ## Scripts
-
+###### Wordpress
+Basic command to install everything on localhost:
+`ansible-playbook -i configs/inventory.yml scripts/wordpress.yml`
 
 ## Additions that will be added
 ###### Wordpress
