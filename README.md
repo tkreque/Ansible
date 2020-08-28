@@ -59,3 +59,13 @@ This Ansible scripts are used for installation of a Lab but can be used for admi
 
 ## Scripts
 
+
+## Additions that will be added
+###### Wordpress
+- SSL
+- Automatic domain creation in WP
+- Adjust WP version installation
+- Adjust when mysql is already installed
+- Adjust when mysql is remote installed
+- Add monitoring
+- Add vault
