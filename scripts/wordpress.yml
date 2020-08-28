@@ -1,0 +1,11 @@
+---
+- name: Instalation of Wordpress 
+  hosts: wordpress
+  become: yes
+
+  roles:
+  - ../roles/general
+  - ../roles/php
+  - ../roles/apache
+  - ../roles/mysql
+  - ../roles/wordpress

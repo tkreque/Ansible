@@ -19,6 +19,8 @@ This Ansible scripts are used for installation of a Lab but can be used for admi
 │   │       └── RedHat
 │   │           └── apache.yml
 │   ├── general
+│   │   ├── handlers
+│   │   │   └── main.yml
 │   │   ├── tasks
 │   │   │   ├── main.yml
 │   │   │   └── RedHat
@@ -43,18 +45,22 @@ This Ansible scripts are used for installation of a Lab but can be used for admi
 │   │       └── RedHat
 │   │           └── php.yml
 │   └── wordpress
+│       ├── handlers
+│       │   └── main.yml
 │       ├── tasks
 │       │   ├── main.yml
 │       │   ├── mysql.yml
 │       │   └── RedHat
 │       │       └── wordpress.yml
 │       ├── templates
+│       │   ├── htaccess.j2
 │       │   └── wp-config.php.j2
 │       └── vars
 │           └── main.yml
-└── wordpress.yml
+└── scripts
+    └── wordpress.yml
 
-22 directories, 22 files
+25 directories, 25 files
 ```
 
 ## Scripts
@@ -69,3 +75,4 @@ This Ansible scripts are used for installation of a Lab but can be used for admi
 - Adjust when mysql is remote installed
 - Add monitoring
 - Add vault
+- Add support to other OS Distros

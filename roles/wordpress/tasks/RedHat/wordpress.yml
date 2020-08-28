@@ -3,13 +3,13 @@
   get_url:
     url: https://wordpress.org/{{wordpress_version}}.tar.gz
     dest: /tmp/wordpress.tar.gz
-  when: wordpress_version == 'latest'
+  # when: wordpress_version == 'latest'
 
-- name: Download Wordpress specific version
-  get_url:
-    url: https://wordpress.org/wordpress-{{wordpress_version}}.tar.gz
-    dest: /tmp/wordpress.tar.gz
-  when: wordpress_version != 'latest'
+# - name: Download Wordpress specific version
+#   get_url:
+#     url: https://wordpress.org/wordpress-{{wordpress_version}}.tar.gz
+#     dest: /tmp/wordpress.tar.gz
+#   when: wordpress_version != 'latest'
 
 - name: Unzip Wordpress to /tmp
   unarchive:
